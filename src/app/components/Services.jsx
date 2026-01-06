@@ -68,12 +68,7 @@ const DATA = {
       description:
         "Affordable security planning based on property layout and risks.",
     },
-    {
-      icon: Eye,
-      title: "Monitoring & Support",
-      description:
-        "Reliable after-installation assistance and troubleshooting.",
-    },
+    
     {
       icon: Wrench,
       title: "System Maintenance",
