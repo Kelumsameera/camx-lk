@@ -2,7 +2,6 @@
 
 import Header from "./components/Header";
 import Hero3D from "./components/Hero3D";
-import Section from "./components/Section";
 import Services from "./components/Services";
 import ContactSection from "./components/Contact";
 import Providers from "./components/Providers";
@@ -11,18 +10,27 @@ import Hero from "./components/Hero";
 
 export default function CamXHomepage() {
   return (
-    <div className="min-h-screen bg-linear-to-br from-gray-900 via-slate-900 to-black text-white">
-      
-      {/* 🔥 Fixed 3D background */}
-      <Header />
+    <div className="relative min-h-screen bg-linear-to-br from-gray-900 via-slate-900 to-black text-white overflow-x-hidden">
 
-      {/* Content ABOVE 3D */}
-      <div className="flex w-full justify-center" >
-        
-        <div className="relative z-0">
-          <Hero3D />
+      {/* 🌌 Background image */}
+      <img
+        src="/bg.png"
+        className="fixed top-20 left-1/2 -translate-x-1/2 w-1/2 h-[80%] object-cover opacity-30 z-0 pointer-events-none"
+        alt="Background"
+      />
 
-        {/* HERO SECTION */}
+      {/* 🎥 3D BACKGROUND */}
+      <Hero3D />
+
+      {/* 🔝 HEADER */}
+      <div className="relative z-20">
+        <Header />
+      </div>
+
+      {/* 📦 CONTENT */}
+      <main className="relative z-10">
+
+        {/* HERO */}
         <section
           id="hero"
           className="min-h-screen flex items-center justify-center"
@@ -54,10 +62,12 @@ export default function CamXHomepage() {
           <Providers />
         </section>
 
-        
-      </div>
-        </div>
+      </main>
+
+      {/* 👣 FOOTER */}
+      <div className="relative z-10">
         <Footer />
+      </div>
     </div>
   );
 }

@@ -84,7 +84,7 @@ export default function Footer() {
                 <div className="backdrop-blur-md bg-white/5 border border-white/10 p-2 rounded-lg">
                   <Mail className="w-4 h-4" />
                 </div>
-                camxsecure@gmail.com
+                info@camx.lk
               </a>
 
               <a
