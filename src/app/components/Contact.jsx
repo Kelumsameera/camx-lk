@@ -37,7 +37,7 @@ export default function ContactSection() {
                 <div className="flex-1">
                   <h3 className="text-lg font-semibold mb-2 text-white">Call Us Directly</h3>
                   <p className="text-2xl font-bold text-cyan-400 mb-2">+94 (72) 400-123</p>
-                  <p className="text-sm text-gray-500">Available Mon-Fri, 9AM-6PM EST</p>
+                  <p className="text-sm text-gray-300">Available Mon-Fri, 9AM-6PM EST</p>
                 </div>
                 <ArrowRight className="w-5 h-5 text-gray-600 group-hover:text-cyan-400 group-hover:translate-x-1 transition-all duration-300" />
               </div>
@@ -53,7 +53,7 @@ export default function ContactSection() {
                 <div className="flex-1">
                   <h3 className="text-lg font-semibold mb-2 text-white">Email Us</h3>
                   <p className="text-2xl font-bold text-cyan-400 mb-2">info@camx.com</p>
-                  <p className="text-sm text-gray-500">We'll respond within 24 hours</p>
+                  <p className="text-sm text-gray-300">We'll respond within 24 hours</p>
                 </div>
                 <ArrowRight className="w-5 h-5 text-gray-600 group-hover:text-cyan-400 group-hover:translate-x-1 transition-all duration-300" />
               </div>
@@ -68,8 +68,8 @@ export default function ContactSection() {
                 </div>
                 <div className="flex-1">
                   <h3 className="text-lg font-semibold mb-2 text-white">Visit Our Office</h3>
-                  <p className="text-2xl font-bold text-cyan-400 mb-2">123 Security St</p>
-                  <p className="text-sm text-gray-500">Your City, ST 12345</p>
+                  <p className="text-2xl font-bold text-cyan-400 mb-2">187/B, 1 Colombo - Horana Rd, </p>
+                  <p className="text-sm text-gray-300">Bokundara,Piliyandala</p>
                 </div>
                 <ArrowRight className="w-5 h-5 text-gray-600 group-hover:text-cyan-400 group-hover:translate-x-1 transition-all duration-300" />
               </div>

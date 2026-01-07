@@ -1,12 +1,10 @@
 "use client";
 
-import { useState } from "react";
-import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import {
   Camera,
   Shield,
   Lock,
-  Eye,
   Wrench,
   Users,
   Laptop,
@@ -15,9 +13,7 @@ import {
   Smartphone,
 } from "lucide-react";
 
-
 import TiltCard from "./TiltCard";
-
 
 /* ---------------- Animation Variants ---------------- */
 const containerVariants = {
@@ -32,216 +28,214 @@ const containerVariants = {
 };
 
 const cardVariants = {
-  hidden: { opacity: 0, y: 40, scale: 0.95 },
+  hidden: { opacity: 0, y: 40, scale: 0.96 },
   show: {
     opacity: 1,
     y: 0,
     scale: 1,
-    transition: { duration: 0.5, ease: "easeOut" },
-  },
-  exit: {
-    opacity: 0,
-    y: 30,
-    scale: 0.95,
-    transition: { duration: 0.3 },
+    transition: { duration: 0.6, ease: "easeOut" },
   },
 };
 
 /* ---------------- Services Data ---------------- */
-const DATA = {
-  security: [
-    {
-      icon: Camera,
-      title: "CCTV Installation",
-      description:
-        "Indoor & outdoor CCTV systems with proper placement and clean installation.",
-    },
-    {
-      icon: Lock,
-      title: "Access Control Systems",
-      description:
-        "Biometric, card, keypad, and smart lock access solutions.",
-    },
-    {
-      icon: Shield,
-      title: "Security Consulting",
-      description:
-        "Affordable security planning based on property layout and risks.",
-    },
-    
-    {
-      icon: Wrench,
-      title: "System Maintenance",
-      description:
-        "Low-cost servicing, cleaning, and long-term system care.",
-    },
-    {
-      icon: Users,
-      title: "Customer Training",
-      description:
-        "Simple training to use systems confidently without complexity.",
-    },
-  ],
+const SECURITY_SERVICES = [
+  {
+    icon: Camera,
+    title: "CCTV Installation",
+    description:
+      "Indoor & outdoor CCTV systems with clean installation and optimal camera placement.",
+  },
+  {
+    icon: Lock,
+    title: "Access Control Systems",
+    description:
+      "Biometric, card, keypad, and smart lock access solutions.",
+  },
+  {
+    icon: Shield,
+    title: "Security Consulting",
+    description:
+      "Practical security planning based on property layout and risk analysis.",
+  },
+  {
+    icon: Wrench,
+    title: "System Maintenance",
+    description:
+      "Affordable servicing, cleaning, and long-term system care.",
+  },
+  {
+    icon: Users,
+    title: "Customer Training",
+    description:
+      "Simple guidance so customers can operate systems confidently.",
+  },
+];
 
-  it: [
-    {
-      icon: Laptop,
-      title: "Home Visit PC Repair",
-      description:
-        "On-site PC repair services at home or office.",
-    },
-    {
-      icon: Settings,
-      title: "PC Troubleshooting",
-      description:
-        "Fix slow systems, crashes, and software issues.",
-    },
-    {
-      icon: Monitor,
-      title: "Software Installation",
-      description:
-        "Windows, drivers, antivirus & essential software setup.",
-    },
-    {
-      icon: Wrench,
-      title: "Hardware Diagnosis",
-      description:
-        "RAM, HDD/SSD, PSU fault detection (no chip-level repair).",
-    },
-  ],
+const IT_SERVICES = [
+  {
+    icon: Laptop,
+    title: "Home Visit PC Repair",
+    description:
+      "On-site PC repair services for homes and offices.",
+  },
+  {
+    icon: Settings,
+    title: "PC Troubleshooting",
+    description:
+      "Fix slow systems, crashes, and software issues.",
+  },
+  {
+    icon: Monitor,
+    title: "Software Installation",
+    description:
+      "Windows, drivers, antivirus & essential software setup.",
+  },
+  {
+    icon: Wrench,
+    title: "Hardware Diagnosis",
+    description:
+      "RAM, HDD/SSD, PSU fault detection (no chip-level repair).",
+  },
+];
 
-  mobile: [
-    {
-      icon: Smartphone,
-      title: "Screen Replacement",
-      description:
-        "Broken or cracked smartphone display replacement.",
-    },
-    {
-      icon: Smartphone,
-      title: "Touch & Display Fix",
-      description:
-        "Touch issues, lines, flickering & black screen fixes.",
-    },
-  ],
-};
+const MOBILE_SERVICES = [
+  {
+    icon: Smartphone,
+    title: "Screen Replacement",
+    description:
+      "Broken or cracked smartphone display replacement.",
+  },
+  {
+    icon: Smartphone,
+    title: "Touch & Display Fix",
+    description:
+      "Touch issues, flickering, lines & black screen fixes.",
+  },
+];
 
 /* ---------------- Main Component ---------------- */
 export default function Services() {
-  const [active, setActive] = useState("security");
-
-  /* Parallax effect */
   const { scrollYProgress } = useScroll();
-  const y = useTransform(scrollYProgress, [0, 1], [0, -80]);
+  const y = useTransform(scrollYProgress, [0, 1], [0, -60]);
 
   return (
-    <section id="services" className="relative py-24 px-4 overflow-hidden">
+    <section
+      id="services"
+      className="relative py-28 px-4 overflow-hidden
+      bg-gradient-to-b from-[#02061713] via-[#020617]/95 to-[#0206170a]"
+    >
       <motion.div style={{ y }} className="mx-auto max-w-7xl">
 
-        {/* Heading */}
-        <div className="mb-14 text-center">
-          <h2 className="mb-4 text-4xl font-bold">Our Services</h2>
-          <p className="mx-auto max-w-2xl text-xl text-gray-400">
+        {/* Page Heading */}
+        <div className="mb-20 text-center">
+          <h2 className="mb-4 text-4xl md:text-5xl font-semibold tracking-tight text-camx-text">
+            Our Services
+          </h2>
+          <p className="mx-auto max-w-2xl text-lg leading-relaxed text-camx-muted">
             Security, IT & mobile solutions you can trust
           </p>
         </div>
 
-        {/* Tabs */}
-        <div className="mb-12 flex justify-center gap-4 flex-wrap">
-          {["security", "it", "mobile"].map((tab) => (
-            <TabButton
-              key={tab}
-              label={tab}
-              active={active}
-              onClick={() => setActive(tab)}
-            />
-          ))}
-        </div>
+        {/* 🔐 Security Section */}
+        <Section
+          title="Security Services"
+          subtitle="Professional surveillance & protection solutions"
+          services={SECURITY_SERVICES}
+        />
 
-        {/* Animated Cards */}
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={active}
-            variants={containerVariants}
-            initial="hidden"
-            animate="show"
-            exit="hidden"
-            className="grid gap-8 md:grid-cols-2 lg:grid-cols-4"
-          >
-            {DATA[active].map((service) => (
-              <ServiceCard key={service.title} service={service} />
-            ))}
-          </motion.div>
-        </AnimatePresence>
+        {/* 💻 IT Section */}
+        <Section
+          title="IT Services"
+          subtitle="Reliable computer & software support"
+          services={IT_SERVICES}
+        />
 
-        {/* Mobile Note */}
-        {active === "mobile" && (
-          <p className="mt-8 text-center text-yellow-400 text-sm">
-            Currently, we offer display replacement services only.
-          </p>
-        )}
+        {/* 📱 Mobile Section */}
+        <Section
+          title="Mobile Services"
+          subtitle="Smartphone display & touch repairs"
+          services={MOBILE_SERVICES}
+        />
+
+        <p className="mt-20 text-center text-camx-warning text-sm">
+          Mobile services currently include display replacement only.
+        </p>
 
       </motion.div>
     </section>
   );
 }
 
-/* ---------------- Tab Button ---------------- */
-function TabButton({ label, active, onClick }) {
-  const isActive = active === label;
-
+/* ---------------- Section Component ---------------- */
+function Section({ title, subtitle, services }) {
   return (
-    <motion.button
-      onClick={onClick}
-      whileTap={{ scale: 0.95 }}
-      className={`px-6 py-3 rounded-full border transition font-medium
-        ${
-          isActive
-            ? "bg-cyan-500 text-black border-cyan-400"
-            : "border-white/20 text-gray-300 hover:border-cyan-400 hover:text-cyan-400"
-        }`}
-    >
-      {label.toUpperCase()}
-    </motion.button>
+    <div className="mb-24">
+      {/* Section Header */}
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
+        className="mb-12 text-center"
+      >
+        <h3 className="text-3xl md:text-4xl font-semibold text-camx-cyan">
+          {title}
+        </h3>
+        <p className="mt-3 text-camx-muted">
+          {subtitle}
+        </p>
+      </motion.div>
+
+      {/* Cards */}
+      <motion.div
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true }}
+        className="grid gap-10 md:grid-cols-2 lg:grid-cols-3"
+      >
+        {services.map((service) => (
+          <ServiceCard key={service.title} service={service} />
+        ))}
+      </motion.div>
+    </div>
   );
 }
 
-
-
+/* ---------------- Service Card ---------------- */
 function ServiceCard({ service }) {
   const Icon = service.icon;
 
   return (
     <TiltCard>
       <motion.div
-        className="group relative rounded-2xl border border-white/10 
-        bg-white/5 p-8 backdrop-blur-md 
-        hover:bg-white/10 hover:shadow-2xl 
-        hover:shadow-cyan-500/30 transition"
+        variants={cardVariants}
+        className="group relative rounded-3xl
+        bg-camx-glass p-8 backdrop-blur-xl
+        border border-camx-border
+        hover:bg-white/6
+        hover:shadow-[0_25px_60px_-15px_rgba(34,211,238,0.22)]
+        transition-all duration-500 ease-out"
         style={{ transformStyle: "preserve-3d" }}
-        whileHover={{ scale: 1.04 }}
       >
-        {/* ICON – FLOATING */}
         <motion.div
           style={{ transform: "translateZ(40px)" }}
-          className="mb-4 text-cyan-400"
-          animate={{ rotate: [0, 6, -6, 0] }}
-          transition={{ duration: 6, repeat: Infinity }}
+          className="mb-5 text-camx-cyan"
+          animate={{ y: [0, -6, 0] }}
+          transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
         >
-          <Icon className="h-12 w-12 drop-shadow-[0_0_14px_rgba(34,211,238,0.7)]" />
+          <Icon className="h-12 w-12 drop-shadow-[0_0_12px_rgba(34,211,238,0.55)]" />
         </motion.div>
 
-        {/* TITLE */}
-        <h3
-          className="mb-3 text-xl font-bold"
+        <h4
+          className="mb-3 text-xl font-semibold tracking-tight text-camx-cyan"
           style={{ transform: "translateZ(30px)" }}
         >
           {service.title}
-        </h3>
+        </h4>
 
-        {/* DESCRIPTION */}
         <p
-          className="text-gray-400"
+          className="text-camx-text/80 leading-relaxed text-sm md:text-base"
           style={{ transform: "translateZ(20px)" }}
         >
           {service.description}
