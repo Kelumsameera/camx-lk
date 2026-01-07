@@ -19,19 +19,20 @@ export default function Footer() {
             {/* Company Info */}
             <div className="flex flex-col gap-4">
               <div className="flex items-center space-x-2">
-                <div className="bg-linear-to-br from-green-500 to-blue-500 p-2 rounded-lg">
+                {/* <div className="bg-linear-to-br from-green-500 to-blue-500 p-2 rounded-lg">
                   <Camera className="w-6 h-6 text-white" />
-                </div>
+                </div> */}
+                <img src="/logo.png" className="flex object-cover h-20"></img>
                 <div>
-                  <span className="text-2xl font-bold text-green-400">CAMX</span>
-                  <span className="text-2xl font-bold text-blue-400"> Secure</span>
+                  {/* <span className="text-2xl font-bold text-green-400">CAMX</span>
+                  <span className="text-2xl font-bold text-blue-400"> Secure</span> */}
                 </div>
               </div>
 
-              <p className="text-gray-400 text-sm">
+              <p className="text-gray-300 text-sm">
                 Professional security solutions provider in Sri Lanka.
               </p>
-              <p className="text-gray-500 text-sm">
+              <p className="text-gray-400 text-sm">
                 Founded by Kalana Kavinda Gamage
               </p>
 

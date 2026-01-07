@@ -24,12 +24,13 @@ export default function Header() {
         <div className="flex justify-between items-center h-20">
           {/* Logo */}
           <div className="flex items-center space-x-2">
-            <div className="bg-linear-to-br from-blue-500 to-cyan-500 p-2 rounded-lg">
+            {/* <div className="bg-linear-to-br from-blue-500 to-cyan-500 p-2 rounded-lg">
               <Camera className="w-6 h-6 text-white" />
             </div>
             <span className="text-3xl font-bold bg-linear-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
               CamX
-            </span>
+            </span> */}
+            <img src="/logo.png"  className=" flex w-full object-contain h-17.5 "></img>
           </div>
 
           {/* Desktop Menu */}

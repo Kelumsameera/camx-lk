@@ -76,20 +76,24 @@ export default function ContactSection() {
             </div>
           </div>
 
-          {/* Right - Map */}
+         {/* Right - Map */}
           <div className="relative group">
             <div className="absolute -inset-1 bg-linear-to-br from-cyan-500/20 to-blue-500/20 rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+
             <div className="relative h-full min-h-125 rounded-3xl overflow-hidden border border-white/10 backdrop-blur-xl bg-white/2">
               <iframe
                 title="Company Location"
-                src="https://www.google.com/maps?q=123%20Security%20St%20Your%20City&output=embed"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d126750.55934604845!2d79.83781178238414!3d6.895988566833155!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae25b8410a125f3%3A0xae041b5d6455618d!2sCamX.lk!5e0!3m2!1sen!2slk!4v1767783854953!5m2!1sen!2slk"
                 className="w-full h-full grayscale hover:grayscale-0 transition-all duration-700"
+                style={{ border: 0 }}
+                allowFullScreen
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
               />
             </div>
           </div>
         </div>
+
 
         {/* CTA Section */}
         <div className="relative backdrop-blur-xl bg-linear-to-br from-cyan-500/10 to-blue-500/10 border border-cyan-500/20 p-12 rounded-3xl overflow-hidden">
