@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform, useMotionValue, useSpring } from "framer-motion";
 import {
   Camera,
   Shield,
@@ -13,7 +13,55 @@ import {
   Smartphone,
 } from "lucide-react";
 
-import TiltCard from "./TiltCard";
+/* ---------------- TiltCard Component ---------------- */
+function TiltCard({ children }) {
+  const rotateX = useMotionValue(0);
+  const rotateY = useMotionValue(0);
+
+  const springX = useSpring(rotateX, { stiffness: 120, damping: 14 });
+  const springY = useSpring(rotateY, { stiffness: 120, damping: 14 });
+
+  const glare = useTransform(
+    rotateY,
+    [-15, 15],
+    ["rgba(255,255,255,0.05)", "rgba(255,255,255,0.15)"]
+  );
+
+  function handleMouseMove(e) {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
+
+    rotateY.set((x - centerX) / 18);
+    rotateX.set(-(y - centerY) / 18);
+  }
+
+  function resetTilt() {
+    rotateX.set(0);
+    rotateY.set(0);
+  }
+
+  return (
+    <div style={{ perspective: 1200 }}>
+      <motion.div
+        onMouseMove={handleMouseMove}
+        onMouseLeave={resetTilt}
+        style={{
+          rotateX: springX,
+          rotateY: springY,
+          backgroundColor: glare,
+          transformStyle: "preserve-3d",
+        }}
+        className="relative rounded-2xl"
+      >
+        {children}
+      </motion.div>
+    </div>
+  );
+}
 
 /* ---------------- Animation Variants ---------------- */
 const containerVariants = {
@@ -121,19 +169,25 @@ export default function Services() {
   return (
     <section
       id="services"
-      className="relative py-28 px-4 overflow-hidden
-      bg-gradient-to-b from-[#02061713] via-[#020617]/95 to-[#0206170a]"
+      className="relative py-20 px-4 overflow-hidden bg-linear-to-b from-slate-900/10 via-slate-900/60 to-slate-900/5"
     >
       <motion.div style={{ y }} className="mx-auto max-w-7xl">
 
         {/* Page Heading */}
-        <div className="mb-20 text-center">
-          <h2 className="mb-4 text-4xl md:text-5xl font-semibold tracking-tight text-camx-text">
-            Our Services
+        <div className="mb-20 text-left">
+          <h2 className="mb-4 text-4xl md:text-5xl font-semibold text-white">
+            Our{" "}
+            <span className="bg-linear-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
+              Services
+            </span>
           </h2>
-          <p className="mx-auto max-w-2xl text-lg leading-relaxed text-camx-muted">
+
+          <p className="w-full text-lg leading-relaxed text-gray-300">
             Security, IT & mobile solutions you can trust
           </p>
+
+          {/* Divider */}
+          <div className="mt-6 h-px w-40 bg-linear-to-r from-cyan-400 to-blue-500" />
         </div>
 
         {/* 🔐 Security Section */}
@@ -157,7 +211,7 @@ export default function Services() {
           services={MOBILE_SERVICES}
         />
 
-        <p className="mt-20 text-center text-camx-warning text-sm">
+        <p className="mt-20 text-center text-amber-500 text-sm">
           Mobile services currently include display replacement only.
         </p>
 
@@ -178,10 +232,10 @@ function Section({ title, subtitle, services }) {
         transition={{ duration: 0.6, ease: "easeOut" }}
         className="mb-12 text-center"
       >
-        <h3 className="text-3xl md:text-4xl font-semibold text-camx-cyan">
+        <h3 className="text-3xl md:text-4xl font-semibold text-cyan-400">
           {title}
         </h3>
-        <p className="mt-3 text-camx-muted">
+        <p className="mt-3 text-gray-400">
           {subtitle}
         </p>
       </motion.div>
@@ -210,17 +264,12 @@ function ServiceCard({ service }) {
     <TiltCard>
       <motion.div
         variants={cardVariants}
-        className="group relative rounded-3xl
-        bg-camx-glass p-8 backdrop-blur-xl
-        border border-camx-border
-        hover:bg-white/6
-        hover:shadow-[0_25px_60px_-15px_rgba(34,211,238,0.22)]
-        transition-all duration-500 ease-out"
+        className="group relative rounded-3xl bg-white/5 p-8 backdrop-blur-xl border border-white/10 hover:bg-white/10 hover:shadow-[0_25px_60px_-15px_rgba(34,211,238,0.22)] transition-all duration-500 ease-out"
         style={{ transformStyle: "preserve-3d" }}
       >
         <motion.div
           style={{ transform: "translateZ(40px)" }}
-          className="mb-5 text-camx-cyan"
+          className="mb-5 text-cyan-400"
           animate={{ y: [0, -6, 0] }}
           transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
         >
@@ -228,14 +277,14 @@ function ServiceCard({ service }) {
         </motion.div>
 
         <h4
-          className="mb-3 text-xl font-semibold tracking-tight text-camx-cyan"
+          className="mb-3 text-xl font-semibold tracking-tight text-cyan-400"
           style={{ transform: "translateZ(30px)" }}
         >
           {service.title}
         </h4>
 
         <p
-          className="text-camx-text/80 leading-relaxed text-sm md:text-base"
+          className="text-white/80 leading-relaxed text-sm md:text-base"
           style={{ transform: "translateZ(20px)" }}
         >
           {service.description}

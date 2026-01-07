@@ -13,7 +13,7 @@ export default function Section() {
   ];
 
   return (
-    <section className="relative overflow-hidden py-20 px-4">
+    <section className="relative overflow-hidden">
       {/* Background Glow */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-0 left-1/4 w-96 h-96 rounded-full bg-blue-500/10 blur-3xl" />

@@ -9,19 +9,19 @@ export default function ContactSection() {
       <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl"></div>
       <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl"></div>
 
-      <div className="max-w-7xl mx-auto relative ">
+      <div className="max-w-7xl mx-auto relative  ">
+
         {/* Heading */}
-        <div className="max-w-3xl mb-2">
-          <div className="inline-block p-5 w-full text-center backdrop-blur-md bg-blue-900/10 border border-cyan-500/20 rounded-full ">
-            <span className="text-white text-2xl p-1 font-medium">Contact Us</span>
-          </div>
-          <h2 className="text-6xl font-bold bg-linear-to-rrom-white to-gray-400 bg-clip-text text-transparent">
-            Let's Build Something Secure Together
+        <div className="mb-16 text-center">
+          <h2 className="mb-4 text-4xl font-bold">
+            Contact  <span className="text-cyan-400">Us</span>
           </h2>
-          <p className="text-xl text-gray-400 leading-relaxed">
-            Ready to elevate your security infrastructure? Our team of experts is here to help you design the perfect solution.
+          <p className="text-lg text-gray-400">
+            Let's Build Something Secure Together
           </p>
         </div>
+        {/* Heading */}
+        
 
         {/* Contact Grid */}
         <div className="grid lg:grid-cols-2 gap-8 mb-20">

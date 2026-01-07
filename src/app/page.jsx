@@ -38,17 +38,17 @@ export default function CamXHomepage() {
         </section>
 
         {/* SERVICES */}
-        <section id="services" className="py-32">
+        <section id="services" className="py-2">
           <Services />
         </section>
 
         {/* PROVIDERS */}
-        <section id="providers" className="py-32">
+        <section id="providers" className="">
           <Providers />
         </section>
 
         {/* CONTACT */}
-        <section id="contact" className="py-32">
+        <section id="contact" className="py-2">
           <ContactSection />
         </section>
 
