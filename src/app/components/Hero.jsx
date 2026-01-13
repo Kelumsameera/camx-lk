@@ -52,9 +52,9 @@ export default function Hero() {
             </div>
           </motion.div>
 
-          <div className="h-[280px] sm:h-[360px] lg:h-[520px]">
+          {/* <div className="h-[280px] sm:h-[360px] lg:h-[520px]">
             <MobileModel />
-          </div>
+          </div> */}
 
 
 
