@@ -89,15 +89,15 @@ const cardVariants = {
 const SECURITY_SERVICES = [
   {
     icon: Camera,
-    title: "CCTV Installation",
+    title: "CCTV Installation Services",
     description:
-      "Indoor & outdoor CCTV systems with clean installation and optimal camera placement.",
+      "Professional CCTV installation in Colombo, Piliyandala, Kesbewa, Boralesgamuwa, Horana and Bandaragama for homes and businesses.",
   },
   {
     icon: Lock,
     title: "Access Control Systems",
     description:
-      "Biometric, card, keypad, and smart lock access solutions.",
+      "Biometric, card, keypad and smart lock access control solutions.",
   },
   {
     icon: Shield,
@@ -109,13 +109,13 @@ const SECURITY_SERVICES = [
     icon: Wrench,
     title: "System Maintenance",
     description:
-      "Affordable servicing, cleaning, and long-term system care.",
+      "Affordable CCTV system servicing, cleaning and long-term support.",
   },
   {
     icon: Users,
     title: "Customer Training",
     description:
-      "Simple guidance so customers can operate systems confidently.",
+      "Easy guidance to confidently operate CCTV and security systems.",
   },
 ];
 
@@ -124,25 +124,25 @@ const IT_SERVICES = [
     icon: Laptop,
     title: "Home Visit PC Repair",
     description:
-      "On-site PC repair services for homes and offices.",
+      "On-site computer repair services for homes and offices.",
   },
   {
     icon: Settings,
     title: "PC Troubleshooting",
     description:
-      "Fix slow systems, crashes, and software issues.",
+      "Fix slow systems, crashes and software issues.",
   },
   {
     icon: Monitor,
     title: "Software Installation",
     description:
-      "Windows, drivers, antivirus & essential software setup.",
+      "Windows, drivers, antivirus and essential software setup.",
   },
   {
     icon: Wrench,
     title: "Hardware Diagnosis",
     description:
-      "RAM, HDD/SSD, PSU fault detection (no chip-level repair).",
+      "RAM, HDD/SSD and power supply fault detection.",
   },
 ];
 
@@ -151,13 +151,13 @@ const MOBILE_SERVICES = [
     icon: Smartphone,
     title: "Screen Replacement",
     description:
-      "Broken or cracked smartphone display replacement.",
+      "Broken or cracked smartphone display replacement service.",
   },
   {
     icon: Smartphone,
     title: "Touch & Display Fix",
     description:
-      "Touch issues, flickering, lines & black screen fixes.",
+      "Touch issues, flickering, lines and black screen fixes.",
   },
 ];
 
@@ -173,41 +173,51 @@ export default function Services() {
     >
       <motion.div style={{ y }} className="mx-auto max-w-7xl">
 
-        {/* Page Heading */}
+        {/* SEO H1 */}
         <div className="mb-20 text-left">
-          <h2 className="mb-4 text-4xl md:text-5xl font-semibold text-white">
-            Our{" "}
-            <span className="bg-linear-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
-              Services
-            </span>
-          </h2>
+          <h1 className="mb-4 text-4xl md:text-5xl font-semibold text-white">
+            CCTV Installation & Security Services in Colombo & Surrounding Areas
+          </h1>
 
           <p className="w-full text-lg leading-relaxed text-gray-300">
-            Security, IT & mobile solutions you can trust
+            We provide professional <strong>CCTV installation services</strong> in
+            Colombo, Piliyandala, Bokundara, Kesbewa, Boralesgamuwa, Horana and
+            Bandaragama and nearby areas. Trusted security, IT and mobile solutions for homes,
+            shops and offices across Sri Lanka.
           </p>
 
-          {/* Divider */}
           <div className="mt-6 h-px w-40 bg-linear-to-r from-cyan-400 to-blue-500" />
         </div>
 
         {/* 🔐 Security Section */}
         <Section
-          title="Security Services"
-          subtitle="Professional surveillance & protection solutions"
+          title="Security & CCTV Installation Services in Sri Lanka"
+          subtitle="Professional surveillance and protection solutions"
           services={SECURITY_SERVICES}
         />
 
+        {/* Internal Links */}
+        <div className="mb-24 text-center text-sm text-gray-400">
+          CCTV installation areas we serve:&nbsp;
+          <a href="/services/cctv-installation-colombo" className="text-cyan-400">Colombo</a>,{" "}
+          <a href="/services/cctv-installation-piliyandala" className="text-cyan-400">Piliyandala</a>,{" "}
+          <a href="/services/cctv-installation-kesbewa" className="text-cyan-400">Kesbewa</a>,{" "}
+          <a href="/services/cctv-installation-boralesgamuwa" className="text-cyan-400">Boralesgamuwa</a>,{" "}
+          <a href="/services/cctv-installation-horana" className="text-cyan-400">Horana</a>,{" "}
+          <a href="/services/cctv-installation-bandaragama" className="text-cyan-400">Bandaragama</a>
+        </div>
+
         {/* 💻 IT Section */}
         <Section
-          title="IT Services"
-          subtitle="Reliable computer & software support"
+          title="IT & Computer Repair Services"
+          subtitle="Reliable computer and software support"
           services={IT_SERVICES}
         />
 
         {/* 📱 Mobile Section */}
         <Section
-          title="Mobile Services"
-          subtitle="Smartphone display & touch repairs"
+          title="Mobile Repair Services"
+          subtitle="Smartphone display and touch repairs"
           services={MOBILE_SERVICES}
         />
 
@@ -224,7 +234,6 @@ export default function Services() {
 function Section({ title, subtitle, services }) {
   return (
     <div className="mb-24">
-      {/* Section Header */}
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -232,15 +241,14 @@ function Section({ title, subtitle, services }) {
         transition={{ duration: 0.6, ease: "easeOut" }}
         className="mb-12 text-center"
       >
-        <h3 className="text-3xl md:text-4xl font-semibold text-cyan-400">
+        <h2 className="text-3xl md:text-4xl font-semibold text-cyan-400">
           {title}
-        </h3>
+        </h2>
         <p className="mt-3 text-gray-400">
           {subtitle}
         </p>
       </motion.div>
 
-      {/* Cards */}
       <motion.div
         variants={containerVariants}
         initial="hidden"
@@ -276,12 +284,12 @@ function ServiceCard({ service }) {
           <Icon className="h-12 w-12 drop-shadow-[0_0_12px_rgba(34,211,238,0.55)]" />
         </motion.div>
 
-        <h4
+        <h3
           className="mb-3 text-xl font-semibold tracking-tight text-cyan-400"
           style={{ transform: "translateZ(30px)" }}
         >
           {service.title}
-        </h4>
+        </h3>
 
         <p
           className="text-white/80 leading-relaxed text-sm md:text-base"

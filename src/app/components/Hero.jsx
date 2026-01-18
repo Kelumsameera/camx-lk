@@ -1,7 +1,9 @@
 "use client";
 
+import { navigate } from "next/dist/client/components/segment-cache/navigation";
 import MobileModel from "./MobileModel";
 import { motion } from "framer-motion";
+import Link from "next/link";
 
 export default function Hero() {
   return (
@@ -40,15 +42,17 @@ export default function Hero() {
                 Get Protected
               </button>
 
-              <button
+             
+              <Link
+                href="/services"
                 className="backdrop-blur-md bg-white/10 
                 border border-white/20 
                 px-7 py-3 rounded-lg 
                 hover:bg-white/20 hover:scale-105 
-                transition-all font-medium text-base sm:text-lg"
+                transition-all font-medium text-base sm:text-lg text-white inline-flex items-center justify-center"
               >
                 View Solutions
-              </button>
+              </Link>
             </div>
           </motion.div>
 

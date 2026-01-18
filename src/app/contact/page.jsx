@@ -119,7 +119,7 @@ export default function ContactPage() {
                         <span className="text-green-400 font-semibold">
                           Email
                         </span>
-                        <br /> camxsecure@gmail.com
+                        <br /> info@camx .lk
                       </div>
                       <div>
                         <span className="text-green-400 font-semibold">
