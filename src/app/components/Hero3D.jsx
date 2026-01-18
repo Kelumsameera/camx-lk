@@ -12,12 +12,12 @@ gsap.registerPlugin(ScrollTrigger);
 /* ================= MODEL ================= */
 
 function CCTVModel() {
-  const { scene } = useGLTF("/models/cctv.glb");
+  const { scene } = useGLTF("/models/cctv-ultra.glb");
   const modelRef = useRef();
 
   const baseRotation = {
     x: -Math.PI / 1.05,
-    y: Math.PI / 1,
+    y: Math.PI,
     z: 0,
   };
 
@@ -37,7 +37,7 @@ function CCTVModel() {
     if (!modelRef.current) return;
     const t = clock.getElapsedTime();
     modelRef.current.rotation.y =
-      baseRotation.y + Math.sin(t * 0.25) * 0.1;
+      baseRotation.y + Math.sin(t * 0.18) * 0.08;
   });
 
   return (
@@ -45,7 +45,7 @@ function CCTVModel() {
       ref={modelRef}
       object={scene}
       position={[1, 1, 0]}
-      scale={[1.5, 1.5, 1.5]}
+      scale={[1.4, 1.4, 1.4]}
       rotation={[baseRotation.x, baseRotation.y, baseRotation.z]}
     />
   );
@@ -81,8 +81,10 @@ function CameraScroll() {
 export default function Hero3D() {
   const [show3D, setShow3D] = useState(false);
 
-  // ⏳ Delay load to improve performance
   useEffect(() => {
+    // ❌ Disable 3D on mobile
+    if (window.innerWidth < 768) return;
+
     const t = setTimeout(() => setShow3D(true), 1200);
     return () => clearTimeout(t);
   }, []);
@@ -93,12 +95,12 @@ export default function Hero3D() {
     <div className="fixed inset-0 z-0 pointer-events-none">
       <Canvas
         camera={{ position: [4, 2, 5], fov: 38 }}
-        gl={{ antialias: true, alpha: true }}
+        gl={{ antialias: false, alpha: true }}
         dpr={[1, 1.5]}
       >
         <ambientLight intensity={1.2} />
-        <directionalLight position={[5, 5, 5]} intensity={1.8} />
-        <hemisphereLight intensity={1.1} />
+        <directionalLight position={[5, 5, 5]} intensity={1.6} />
+        <hemisphereLight intensity={1.0} />
 
         <Suspense fallback={null}>
           <CCTVModel />
@@ -109,5 +111,3 @@ export default function Hero3D() {
     </div>
   );
 }
-
-useGLTF.preload("/models/cctv.glb");
