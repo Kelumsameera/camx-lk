@@ -2,8 +2,9 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { Camera, Menu, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
 
 export default function Header() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -19,31 +20,37 @@ export default function Header() {
   const isActive = (path) => pathname === path;
 
   return (
-    <nav className="backdrop-blur-md bg-white/5 border-b border-white/10 fixed w-full top-0 z-50">
+    <nav
+      className="fixed top-0 z-50 w-full backdrop-blur-md bg-white/5 border-b border-white/10"
+      aria-label="Main navigation"
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-20">
-          {/* Logo */}
-          <div className="flex items-center space-x-2">
-            {/* <div className="bg-linear-to-br from-blue-500 to-cyan-500 p-2 rounded-lg">
-              <Camera className="w-6 h-6 text-white" />
-            </div>
-            <span className="text-3xl font-bold bg-linear-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
-              CamX
-            </span> */}
-            <img src="/logo.png"  className=" flex w-full object-contain h-17.5 "></img>
-          </div>
+        <div className="flex h-20 items-center justify-between">
 
-          {/* Desktop Menu */}
+          {/* ✅ LOGO (CLS + SEO FIXED) */}
+          <Link href="/" className="flex items-center">
+            <Image
+              src="/logo.png"
+              alt="CAMX Secure CCTV Installation Sri Lanka"
+              width={176}
+              height={70}
+              priority
+              className="object-contain"
+            />
+          </Link>
+
+          {/* DESKTOP MENU */}
           <div className="hidden md:flex space-x-8">
             {navLinks.map((link) => (
               <Link
                 key={link.path}
                 href={link.path}
-                className={`transition font-medium ${
+                className={`font-medium transition ${
                   isActive(link.path)
                     ? "text-cyan-400"
                     : "text-gray-300 hover:text-cyan-400"
                 }`}
+                aria-current={isActive(link.path) ? "page" : undefined}
               >
                 {link.name}
               </Link>
@@ -51,30 +58,38 @@ export default function Header() {
           </div>
 
           {/* CTA */}
-          <button className="hidden md:block bg-linear-to-r from-blue-500 to-cyan-500 text-white px-6 py-2 rounded-lg hover:shadow-lg hover:shadow-cyan-500/50 transition font-medium">
+          <Link
+            href="/contact"
+            className="hidden md:inline-flex items-center justify-center
+            bg-linear-to-r from-blue-500 to-cyan-500
+            px-6 py-2 rounded-lg font-medium text-white
+            hover:shadow-lg hover:shadow-cyan-500/50 transition"
+            aria-label="Get CCTV installation quote"
+          >
             Get Quote
-          </button>
+          </Link>
 
-          {/* Mobile Menu Button */}
+          {/* MOBILE TOGGLE */}
           <button
             onClick={() => setSidebarOpen(!sidebarOpen)}
             className="md:hidden text-gray-300"
+            aria-label={sidebarOpen ? "Close menu" : "Open menu"}
           >
             {sidebarOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
         </div>
       </div>
 
-      {/* Mobile Menu */}
+      {/* MOBILE MENU */}
       {sidebarOpen && (
         <div className="md:hidden backdrop-blur-md bg-white/5 border-t border-white/10">
-          <div className="px-4 py-4 space-y-3">
+          <div className="px-4 py-4 space-y-4">
             {navLinks.map((link) => (
               <Link
                 key={link.path}
                 href={link.path}
                 onClick={() => setSidebarOpen(false)}
-                className={`block transition font-medium ${
+                className={`block font-medium transition ${
                   isActive(link.path)
                     ? "text-cyan-400"
                     : "text-gray-300 hover:text-cyan-400"
@@ -84,9 +99,14 @@ export default function Header() {
               </Link>
             ))}
 
-            <button className="w-full bg-linear-to-r from-blue-500 to-cyan-500 text-white px-6 py-2 rounded-lg hover:shadow-lg hover:shadow-cyan-500/50 transition font-medium">
+            <Link
+              href="/contact"
+              onClick={() => setSidebarOpen(false)}
+              className="block text-center bg-linear-to-r from-blue-500 to-cyan-500
+              px-6 py-2 rounded-lg font-medium text-white"
+            >
               Get Quote
-            </button>
+            </Link>
           </div>
         </div>
       )}

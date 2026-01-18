@@ -12,22 +12,27 @@ export default function CamXHomepage() {
   return (
     <div className="relative min-h-screen bg-linear-to-br from-gray-900 via-slate-900 to-black text-white overflow-x-hidden">
 
-      {/* 🌌 FIXED BACKGROUND SVG */}
+      {/* 🌌 FIXED BACKGROUND SVG (CLS SAFE) */}
       <img
         src="/bg.svg"
+        width={1920}
+        height={1080}
         className="fixed top-20 left-1/2 -translate-x-1/2 
         w-full h-[80%] object-cover opacity-30 
         z-0 pointer-events-none"
-        alt="Background"
+        alt=""
+        aria-hidden="true"
       />
 
-      {/* 🎥 GLOBAL 3D BACKGROUND (ONCE ONLY) */}
-      <Hero3D />
+      {/* 🎥 GLOBAL 3D BACKGROUND (RESERVED SPACE) */}
+      <div className="fixed inset-0 z-0 pointer-events-none min-h-screen">
+        <Hero3D />
+      </div>
 
       {/* 🔝 HEADER */}
-      <div className="relative z-20">
+      <header className="relative z-20">
         <Header />
-      </div>
+      </header>
 
       {/* 📦 MAIN CONTENT */}
       <main className="relative z-10">
@@ -43,7 +48,7 @@ export default function CamXHomepage() {
         </section>
 
         {/* PROVIDERS */}
-        <section id="providers" className="">
+        <section id="providers">
           <Providers />
         </section>
 
@@ -55,9 +60,10 @@ export default function CamXHomepage() {
       </main>
 
       {/* 👣 FOOTER */}
-      <div className="relative z-10">
+      <footer className="relative z-10">
         <Footer />
-      </div>
+      </footer>
+
     </div>
   );
 }
