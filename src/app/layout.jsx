@@ -1,5 +1,5 @@
 import "./globals.css";
-
+import { GoogleAnalytics } from '@next/third-parties/google'
 export const metadata = {
   title: {
     default: "CCTV Installation Sri Lanka | CAMX Secure",
@@ -101,6 +101,7 @@ export default function RootLayout({ children }) {
           }}
         />
       </body>
+      <GoogleAnalytics gaId="G-DV09Q30PDC" />
     </html>
   );
 }
